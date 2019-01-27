@@ -18,8 +18,8 @@ RUN go get -u github.com/golang/dep/cmd/dep
 
 # Create a dep project, and run `ensure`, which will pull in all 
 # of the dependencies within this directory.
-RUN dep init && dep ensure
-RUN go install ./vendor/github.com/golang/protobuf/protoc-gen-go/ && go install ./vendor/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway/
+RUN dep ensure
+RUN go get -u github.com/golang/protobuf/protoc-gen-go
 
 # Build the binary, with a few flags which will allow
 # us to run this binary in Alpine. 
