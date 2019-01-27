@@ -1,13 +1,12 @@
 FROM golang:latest as builder
 
-WORKDIR /go/src/github.com/eddiewang/shippy/consignment-cli
+WORKDIR /go/src/github.com/eddiewang/shippy/consignment-service/consignment-cli
 
 COPY . .
 
 RUN go get -u github.com/golang/dep/cmd/dep
 
 RUN dep ensure
-RUN go get -u github.com/golang/protobuf/protoc-gen-go
 
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo .
 

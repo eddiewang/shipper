@@ -2,20 +2,19 @@
 
 
 [[projects]]
-  branch = "master"
-  digest = "1:ef5b0622d834c139454148b8fd0c92bb314828900532b267ae62da9fec109866"
+  digest = "1:6c0f1bc4d83abbdcb860204b7935b5cf072d449e225c33946b68968aa06d20a0"
   name = "github.com/armon/go-metrics"
   packages = ["."]
   pruneopts = "UT"
-  revision = "f0300d1749da6fa982027e449ec0c7a145510c3c"
+  revision = "3df31a1ada83e310c2e24b267c8e8b68836547b4"
 
 [[projects]]
   branch = "master"
-  digest = "1:0da1fc4428baf51c8ed5fc337b0a0df2919e2c7b8b4fdc6af34acd48dd0c7720"
+  digest = "1:807f67a6ca7962ba248567102e9c7f271735b5954a666a8826097fdc54488288"
   name = "github.com/eddiewang/shipper"
   packages = ["consignment-service/proto/consignment"]
   pruneopts = "UT"
-  revision = "ff7c5d71c9bf93ab6028211c85bdefd12c064767"
+  revision = "33b495ce7676c3177eed04feb6dc10de130cfc4e"
 
 [[projects]]
   digest = "1:4be5d1a52c61b74c0a4d62f37c0640f706ae6e07eb73617dd013990d565717d5"
@@ -29,12 +28,20 @@
   version = "v0.1.0"
 
 [[projects]]
-  digest = "1:97df918963298c287643883209a2c3f642e6593379f97ab400c2a2e219ab647d"
+  branch = "master"
+  digest = "1:6807f0149aeafca85e8ca7e5516aed5d3e1ef59d871660f3ac2ee28477eb5c26"
   name = "github.com/golang/protobuf"
-  packages = ["proto"]
+  packages = [
+    "proto",
+    "protoc-gen-go",
+    "protoc-gen-go/descriptor",
+    "protoc-gen-go/generator",
+    "protoc-gen-go/generator/internal/remap",
+    "protoc-gen-go/grpc",
+    "protoc-gen-go/plugin",
+  ]
   pruneopts = "UT"
-  revision = "aa810b61a9c79d51363740d207bb46cf8e620ed5"
-  version = "v1.2.0"
+  revision = "347cf4a86c1cb8d262994d8ef5924d4576c5b331"
 
 [[projects]]
   branch = "master"
@@ -79,14 +86,6 @@
   revision = "d5fe4b57a186c716b0e00b8c301cbd9b4182694d"
 
 [[projects]]
-  digest = "1:2be5a35f0c5b35162c41bb24971e5dcf6ce825403296ee435429cdcc4e1e847e"
-  name = "github.com/hashicorp/go-immutable-radix"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "27df80928bb34bb1b0d6d0e01b9e679902e7a6b5"
-  version = "v1.0.0"
-
-[[projects]]
   digest = "1:b8ba23b0b493e601d5ebaf21079bd3433eb304a5d73c0fb40b8aea526e94f46b"
   name = "github.com/hashicorp/go-msgpack"
   packages = ["codec"]
@@ -116,14 +115,6 @@
   pruneopts = "UT"
   revision = "3aed17b5ee41761cc2b04f2a94c7107d428967e5"
   version = "v1.0.1"
-
-[[projects]]
-  digest = "1:67474f760e9ac3799f740db2c489e6423a4cde45520673ec123ac831ad849cb8"
-  name = "github.com/hashicorp/golang-lru"
-  packages = ["simplelru"]
-  pruneopts = "UT"
-  revision = "20f1fb78b0740ba8c3cb143a61e86ba5c8669768"
-  version = "v0.5.0"
 
 [[projects]]
   digest = "1:c839c9a399b78daeff75848565aff9ece9a389e50b77926065b6e504ed088bb5"
@@ -157,7 +148,8 @@
   revision = "cbfa9447f9b655f8e66583237e51f40ca9bff860"
 
 [[projects]]
-  digest = "1:cc602fcdd9e0baf166a9f83c3e53af5b9524749baedf734cec8d90a70fde3bdf"
+  branch = "master"
+  digest = "1:3c5088e1f4779e4f5cfe30be62b19a07a7db5c070216d6a3ac10ed042d987371"
   name = "github.com/micro/go-micro"
   packages = [
     ".",
@@ -192,8 +184,7 @@
     "transport/memory",
   ]
   pruneopts = "UT"
-  revision = "d090a97a3d12653206501b002edec2cd463adb99"
-  version = "v0.22.1"
+  revision = "e22fa01935f531077d3d80e5d02d8a53d0d54426"
 
 [[projects]]
   branch = "master"
@@ -351,6 +342,7 @@
   analyzer-version = 1
   input-imports = [
     "github.com/eddiewang/shipper/consignment-service/proto/consignment",
+    "github.com/golang/protobuf/protoc-gen-go",
     "github.com/micro/go-micro",
   ]
   solver-name = "gps-cdcl"

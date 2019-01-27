@@ -1,7 +1,7 @@
 build:
 	docker build -t consignment-cli .
 
-build_clean:
+build-clean:
 	docker build --no-cache -t consignment-cli .
 
 run:

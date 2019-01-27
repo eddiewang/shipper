@@ -38,7 +38,7 @@ required = [
 
 [[constraint]]
   name = "github.com/micro/go-micro"
-  version = "0.22.1"
+  branch = "master"
 
 [prune]
   go-tests = true
