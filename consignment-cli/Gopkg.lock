@@ -11,11 +11,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:de17b9a9dda3af0f93331b3a262897f8b120ac9c73b16dcbe1e0cc3bbfe2a895"
+  digest = "1:0da1fc4428baf51c8ed5fc337b0a0df2919e2c7b8b4fdc6af34acd48dd0c7720"
   name = "github.com/eddiewang/shipper"
   packages = ["consignment-service/proto/consignment"]
   pruneopts = "UT"
-  revision = "1582d563fb0c42dcac9538d40e49bf76deb8b471"
+  revision = "ff7c5d71c9bf93ab6028211c85bdefd12c064767"
 
 [[projects]]
   digest = "1:4be5d1a52c61b74c0a4d62f37c0640f706ae6e07eb73617dd013990d565717d5"
@@ -29,20 +29,12 @@
   version = "v0.1.0"
 
 [[projects]]
-  branch = "master"
-  digest = "1:6807f0149aeafca85e8ca7e5516aed5d3e1ef59d871660f3ac2ee28477eb5c26"
+  digest = "1:97df918963298c287643883209a2c3f642e6593379f97ab400c2a2e219ab647d"
   name = "github.com/golang/protobuf"
-  packages = [
-    "proto",
-    "protoc-gen-go",
-    "protoc-gen-go/descriptor",
-    "protoc-gen-go/generator",
-    "protoc-gen-go/generator/internal/remap",
-    "protoc-gen-go/grpc",
-    "protoc-gen-go/plugin",
-  ]
+  packages = ["proto"]
   pruneopts = "UT"
-  revision = "347cf4a86c1cb8d262994d8ef5924d4576c5b331"
+  revision = "aa810b61a9c79d51363740d207bb46cf8e620ed5"
+  version = "v1.2.0"
 
 [[projects]]
   branch = "master"
@@ -359,7 +351,6 @@
   analyzer-version = 1
   input-imports = [
     "github.com/eddiewang/shipper/consignment-service/proto/consignment",
-    "github.com/golang/protobuf/protoc-gen-go",
     "github.com/micro/go-micro",
   ]
   solver-name = "gps-cdcl"

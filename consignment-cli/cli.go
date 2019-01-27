@@ -30,7 +30,7 @@ func main() {
 	service := micro.NewService(micro.Name("go.micro.srv.consignment"))
 	service.Init()
 
-	client := pb.NewShippingService("client", service.Client())
+	client := pb.NewShippingService("cli-client", service.Client())
 	// Contact the server and print out response
 	file := defaultFileName
 	if len(os.Args) > 1 {
