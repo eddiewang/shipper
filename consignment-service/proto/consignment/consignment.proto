@@ -29,4 +29,3 @@ message Response {
   Consignment consignment = 2;
   repeated Consignment consignments = 3;
 }
-
