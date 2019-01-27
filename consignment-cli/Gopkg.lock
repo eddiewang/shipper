@@ -29,12 +29,20 @@
   version = "v0.1.0"
 
 [[projects]]
-  digest = "1:97df918963298c287643883209a2c3f642e6593379f97ab400c2a2e219ab647d"
+  branch = "master"
+  digest = "1:6807f0149aeafca85e8ca7e5516aed5d3e1ef59d871660f3ac2ee28477eb5c26"
   name = "github.com/golang/protobuf"
-  packages = ["proto"]
+  packages = [
+    "proto",
+    "protoc-gen-go",
+    "protoc-gen-go/descriptor",
+    "protoc-gen-go/generator",
+    "protoc-gen-go/generator/internal/remap",
+    "protoc-gen-go/grpc",
+    "protoc-gen-go/plugin",
+  ]
   pruneopts = "UT"
-  revision = "aa810b61a9c79d51363740d207bb46cf8e620ed5"
-  version = "v1.2.0"
+  revision = "347cf4a86c1cb8d262994d8ef5924d4576c5b331"
 
 [[projects]]
   branch = "master"
@@ -157,9 +165,10 @@
   revision = "cbfa9447f9b655f8e66583237e51f40ca9bff860"
 
 [[projects]]
-  digest = "1:fb31b93bb58f565d42e0f0b1fa45f9b73a89f00b1cc1b04bb6af1115e21eda21"
+  digest = "1:cc602fcdd9e0baf166a9f83c3e53af5b9524749baedf734cec8d90a70fde3bdf"
   name = "github.com/micro/go-micro"
   packages = [
+    ".",
     "broker",
     "broker/http",
     "broker/memory",
@@ -350,8 +359,8 @@
   analyzer-version = 1
   input-imports = [
     "github.com/eddiewang/shipper/consignment-service/proto/consignment",
-    "github.com/micro/go-micro/client",
-    "github.com/micro/go-micro/cmd",
+    "github.com/golang/protobuf/protoc-gen-go",
+    "github.com/micro/go-micro",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
