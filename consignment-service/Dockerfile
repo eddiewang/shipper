@@ -20,6 +20,8 @@ RUN go get -u github.com/golang/dep/cmd/dep
 # of the dependencies within this directory.
 RUN dep ensure
 
+RUN protoc --version
+
 # Build the binary, with a few flags which will allow
 # us to run this binary in Alpine. 
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo .
