@@ -1,4 +1,4 @@
-FROM golang:1.11.4 as builder
+FROM golang:latest as builder
 
 WORKDIR /go/src/github.com/eddiewang/shippy/consignment-cli
 
@@ -6,7 +6,7 @@ COPY . .
 
 RUN go get -u github.com/golang/dep/cmd/dep
 
-RUN dep init && dep ensure
+RUN dep ensure
 
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo .
 

@@ -1,7 +1,7 @@
 build:
 	protoc -I. --go_out=plugins=micro:$(GOPATH)/src/github.com/eddiewang/shipper/consignment-service \
 	  proto/consignment/consignment.proto
-	# docker build -t consignment-service .
+	docker build -t consignment-service .
 
 run: 
 	docker run -p 50051:50051 \
