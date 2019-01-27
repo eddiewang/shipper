@@ -1,8 +1,7 @@
-build:
-	docker build -t consignment-cli .
+build: docker
 
-build-clean:
-	docker build --no-cache -t consignment-cli .
+docker:
+	docker build -t consignment-cli .
 
 run:
 	docker run -e MICRO_REGISTRY=mdns consignment-cli

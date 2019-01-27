@@ -10,6 +10,14 @@
   revision = "f0300d1749da6fa982027e449ec0c7a145510c3c"
 
 [[projects]]
+  branch = "master"
+  digest = "1:a14a07cbcf2d33604d095b5221d1c2d702ef0e675f03bcd111b0a8328f3f23e8"
+  name = "github.com/eddiewang/shipper"
+  packages = ["vessel-service/proto/vessel"]
+  pruneopts = "UT"
+  revision = "ba6ed210db432f11382f0aa8b7fca49fb0ae4d64"
+
+[[projects]]
   digest = "1:4be5d1a52c61b74c0a4d62f37c0640f706ae6e07eb73617dd013990d565717d5"
   name = "github.com/go-log/log"
   packages = [
@@ -350,6 +358,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/eddiewang/shipper/vessel-service/proto/vessel",
     "github.com/golang/protobuf/proto",
     "github.com/golang/protobuf/protoc-gen-go",
     "github.com/micro/go-micro",

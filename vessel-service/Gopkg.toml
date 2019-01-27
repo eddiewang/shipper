@@ -33,7 +33,6 @@ required = [
   name = "github.com/golang/protobuf"
   branch = "master"
 
-
 [[constraint]]
   name = "github.com/micro/go-micro"
   version = "0.22.1"
