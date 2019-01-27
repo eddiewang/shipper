@@ -8,8 +8,7 @@ import (
 	"os"
 
 	pb "github.com/eddiewang/shipper/consignment-service/proto/consignment"
-	microclient "github.com/micro/go-micro/client"
-	"github.com/micro/go-micro/cmd"
+	micro "github.com/micro/go-micro"
 )
 
 const (
@@ -28,9 +27,10 @@ func parseFile(file string) (*pb.Consignment, error) {
 }
 
 func main() {
-	cmd.Init()
-	client := pb.NewShippingServiceClient("go.micro.srv.consignment", microclient.DefaultClient)
+	service := micro.NewService(micro.Name("go.micro.srv.consignment"))
+	service.Init()
 
+	client := pb.NewShippingService("client", service.Client())
 	// Contact the server and print out response
 	file := defaultFileName
 	if len(os.Args) > 1 {
