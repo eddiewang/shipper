@@ -1,4 +1,4 @@
-
+.PHONY: proto
 build: proto docker
 
 proto:

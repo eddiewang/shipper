@@ -1,64 +1,53 @@
 package main
 
 import (
-	"context"
-	"errors"
 	"fmt"
+	"log"
+	"os"
 
 	pb "github.com/eddiewang/shipper/vessel-service/proto/vessel"
 	micro "github.com/micro/go-micro"
 )
 
-type Repository interface {
-	FindAvailable(*pb.Specification) (*pb.Vessel, error)
-}
+const (
+	defaultHost = "localhost:27017"
+)
 
-type VesselRepository struct {
-	vessels []*pb.Vessel
-}
-
-// FindAvailable - checks a specification against a map of vessels,
-// if capacity and max weight are below a vessels capacity and max weight,
-// then return that vessel.
-func (repo *VesselRepository) FindAvailable(spec *pb.Specification) (*pb.Vessel, error) {
-	for _, vessel := range repo.vessels {
-		if spec.Capacity <= vessel.Capacity && spec.MaxWeight <= vessel.MaxWeight {
-			return vessel, nil
-		}
+func createDummyData(repo Repository) {
+	defer repo.Close()
+	vessels := []*pb.Vessel{
+		{Id: "vessel001", Name: "Kane's Salty Secret", MaxWeight: 200000, Capacity: 500},
 	}
-	return nil, errors.New("No vessel found by that spec")
-}
-
-// Our grpc service handler
-type service struct {
-	repo Repository
-}
-
-func (s *service) FindAvailable(ctx context.Context, req *pb.Specification, res *pb.Response) error {
-
-	// Find the next available vessel
-	vessel, err := s.repo.FindAvailable(req)
-	if err != nil {
-		return err
+	for _, v := range vessels {
+		repo.Create(v)
 	}
-
-	// Set the vessel as part of the response message type
-	res.Vessel = vessel
-	return nil
 }
 
 func main() {
-	vessels := []*pb.Vessel{
-		&pb.Vessel{Id: "vessel1001", Name: "Boaty McBoatface", MaxWeight: 20000, Capacity: 500},
+
+	host := os.Getenv("DB_HOST")
+	if host == "" {
+		host = defaultHost
 	}
-	repo := &VesselRepository{vessels}
+
+	session, err := CreateSession(host)
+	if err != nil {
+		log.Fatalf("Error connecting to datastore: %v", err)
+	}
+	defer session.Close()
+	repo := &VesselRepository{session.Copy()}
+
+	createDummyData(repo)
 
 	srv := micro.NewService(
 		micro.Name("go.micro.srv.vessel"),
 		micro.Version("latest"),
 	)
+
 	srv.Init()
-	pb.RegisterVesselServiceHandler(srv.Server(), &service{repo})
+
+	pb.RegisterVesselServiceHandler(srv.Server(), &service{session})
+
 	if err := srv.Run(); err != nil {
 		fmt.Println(err)
 	}
