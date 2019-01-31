@@ -1,6 +1,6 @@
 FROM golang:latest as builder
 
-WORKDIR /go/src/github.com/eddiewang/shippy/consignment-service/consignment-cli
+WORKDIR /go/src/github.com/eddiewang/shipper/consignment-cli/consignment-cli
 
 COPY . .
 
@@ -21,6 +21,6 @@ WORKDIR /app
 # we pull the binary from the container named `builder`, within
 # this build context. This reaches into our previous image, finds
 # the binary we built, and pulls it into this container. Amazing!
-COPY --from=builder /go/src/github.com/eddiewang/shippy/consignment-service/consignment-cli .
+COPY --from=builder /go/src/github.com/eddiewang/shipper/consignment-cli/consignment-cli .
 
 CMD ["./consignment-cli"]
